@@ -1,4 +1,14 @@
-
+<script type="text/javascript">
+    function FecharJanela() {
+      top.window.jCadastros.close();
+    }
+    function Excluir(src){
+          if(confirm("Você deseja excluir este registro?")){
+              location.href = src;
+              
+          }
+      }
+</script>
 <div class="x_panel">
     <div class="x_title">
         <h3><?=$titulo?></h3>
@@ -11,27 +21,27 @@
         <?php
             
             
-            print form_open($action);
+            print form_open($action,array("name"=>"form_record_default"));
                 
                 $quantidade_campos = count($dados);
                 for($contagem = 0; $contagem < $quantidade_campos; $contagem++){
 
-                    print '<div class="col-md-3">';
+                    print '<div class="col-sm-6">';
                         print helperCustom_campoFormulario($dados[$contagem]);
-                        
                     print '</div>';
 
                 }      
                 
-                
+              
+
                 
                 print '<div class="clearfix"></div>';
                 print '<br>';
-                print form_button("btn_voltar", "Voltar", "class='btn btn-default' onclick=window.location.href='".base_url()."".$voltar."'");
+                print form_button("btn_voltar", "Fechar", "class='btn btn-default' onclick='javascript:FecharJanela();'");
                 if($botao_excluir)
-                    print form_submit("btn_excluir", "Excluir", "class='btn btn-danger'");
+                    print form_button("btn_excluir", "Excluir", "class='btn btn-danger' onclick=javascript:Excluir('".base_url()."".$voltar."/excluir?".$key."');");
                 if($botao_editar)
-                    print form_submit("btn_editar", "Editar", "class='btn btn-warning'");
+                    print form_submit("btn_editar", "Atualizar", "class='btn btn-warning'");
                 if($botao_inserir)
                     print form_submit("btn_inserir", "Inserir", "class='btn btn-success'");
                 

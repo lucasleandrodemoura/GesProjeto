@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://www.suppry.com.br/fezinha/';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '/var/www/html/system/cache/';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'YjKdkaoasuazaa927oaskasuAA9';
+$config['encryption_key'] = 'kjlaetjklaeOIUIOUIOUIouioaeleaklejaklaejioUIOioaeklt';
 
 /*
 |--------------------------------------------------------------------------
@@ -245,7 +245,7 @@ $config['encryption_key'] = 'YjKdkaoasuazaa927oaskasuAA9';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'painel';
+$config['sess_cookie_name'] = 'fezinha';
 $config['sess_expiration'] = 7200;
 $name_pasta_sessao = sys_get_temp_dir();
 $config['sess_save_path'] = $name_pasta_sessao;

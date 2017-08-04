@@ -12,6 +12,7 @@ if ( ! function_exists('campo_formulario'))
     {
         $tipo_dado = $campo->getTipo_dado();
         $nulo = $campo->getNulo();
+        
         $extra = "";
         //Para campos INPUT
         $conteudo = array(
@@ -30,11 +31,37 @@ if ( ! function_exists('campo_formulario'))
             $conteudo["readonly"] = "readonly";
         }
         
-        if($campo->getNulo()=="YES"){
+        if($campo->getNulo()=="NO"){
             $conteudo["required"] = "required";
         }
         
-        return form_label($campo->getLabel_padrao())."".form_input($conteudo,$extra);
+        
+        
+        if(sizeof($campo->getDependencia())>0){
+            
+            $tabela_referenciada = $campo->getDependencia()[0]->TABELA_REFERENCIADA;
+            $conteudo["readonly"] = "readonly";
+            $campoRetorno= form_label($campo->getLabel_padrao());
+            $campoRetorno.= '<div class="input-group">';
+            $campoRetorno.= form_input($conteudo,$extra);
+            $campoRetorno.= '             <span class="input-group-btn">';
+            $campoRetorno.= '                  <button class="btn btn-default input-sm" onclick="javascript:ConsultaPadrao(\''.$tabela_referenciada.'\',\''.$campo->getColuna().'\',\''.$campo->getColuna().'_btn\');" id="'.$campo->getColuna().'_btn" type="button">Selecionar</button>';
+            $campoRetorno.= '             </span>';
+            $campoRetorno.= '</div>';
+            
+            
+            return $campoRetorno;
+        }
+        else if($campo->getTipo_dado()=="memo"){
+            return form_label($campo->getLabel_padrao())."". form_textarea($conteudo);
+        }
+        else if($campo->getTipo_dado()=="boolean"){
+            return form_label($campo->getLabel_padrao())."".form_dropdown($conteudo,array(0=>"Não",1=>"Sim"),$campo->getValue());
+        }
+        else{
+        
+            return form_label($campo->getLabel_padrao())."".form_input($conteudo,$extra);
+        }
         
     }
     

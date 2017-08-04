@@ -1,0 +1,15 @@
+/* TEAM */
+	Developer: Cléverton Heming
+	From:Lajeado, RS, Brasil
+
+	Developer: Lucas Leandro de Moura
+	From:Estrela, RS, Brasil
+
+/* THANKS */
+		
+
+/* SITE */
+	Last update:2015/01/10
+	Language:Portuguese
+	Doctype:HTML5
+	IDE: Sublime Text, CodeCharge Studio

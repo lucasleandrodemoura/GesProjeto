@@ -75,12 +75,12 @@ $active_group = 'default';
 $query_builder = TRUE;
    $db['default'] = array( 
                     'dsn'	=> '', 
-                    'hostname' => '', 
-                    'username' => '', 
+                    'hostname' => 'localhost', 
+                    'username' => 'root', 
                     'password' => '', 
                     'database' => '', 
                     'dbdriver' => 'mysqli', 
-                    'port' => '', 
+                    'port' => '3306', 
                     'pconnect' => FALSE, 
                     'db_debug' => (ENVIRONMENT !== 'production'),
                     'cache_on' => FALSE,

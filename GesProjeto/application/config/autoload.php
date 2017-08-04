@@ -133,3 +133,11 @@ $autoload['config'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array("Campos","Menus","Cadastros");
+$autoload['model'][] = "ModelFiliais";
+$autoload['model'][] = "ModelClientes";
+$autoload['model'][] = "ModelLocalEntrega";
+$autoload['model'][] = "ModelPedido";
+$autoload['model'][] = "ModelTiposEstruturas";
+$autoload['model'][] = "ModelUsuario";
+$autoload['model'][] = "ModelOrdensEntrega";
+$autoload['model'][] = "ModelProdutos";

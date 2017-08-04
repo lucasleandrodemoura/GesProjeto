@@ -3,11 +3,20 @@
     <!-- Título e botão para inserir novo registro -->
     <div class="x_title">
         <h3><?=$titulo?></h3>
-            <?php if($novo) { ?>
-                <ul class="nav navbar-right">
-                    <li><button class="btn btn-success" id="btn_cadastrar" onclick="window.location.href='<?= base_url()."".$novo?>'" title="Cadastrar">Novo</button></li>
-                </ul>
+        <ul class="nav navbar-right">
+            <li>
+            <?php if($botaoVoltar!="") { ?>
+                
+                    <button class="btn btn-default" id="btn_voltar" onclick="javascript:location.href='<?= base_url()."".$botaoVoltar?>'" title="Voltar">Voltar</button>
+                
             <?php } ?>
+            <?php if($novo) { ?>
+                
+                    <button class="btn btn-success" id="btn_cadastrar" onclick="javascript:Cadastros('<?= base_url()."".$novo?>');" title="Cadastrar">Novo</button>
+                
+            <?php } ?>
+            </li>
+        </ul>
             <div class="clearfix"></div>
     </div>
  
@@ -17,11 +26,23 @@
         if(count($dados["filtros"])>0){
             print "<div class='x_panel'>";
             $contagem = 0;
-            print form_open($src);
+            
+            $linkPrimary = "";
+            if($this->input->get()){
+                foreach($this->input->get() as $labelPrimary=>$valorPrimary){
+                    if($linkPrimary!=""){
+                        $linkPrimary="&";
+                    }
+                        $linkPrimary.=$labelPrimary."=".$valorPrimary;
+                }
+            }
+            
+            print form_open($src."?".$linkPrimary);
             $cont = 0;
             print "<div class='row'>";
             foreach ($dados["filtros"] as $campo){
                 print "<div class='col-md-3'>";    
+                    $campo->setNulo("YES");
                     print helperCustom_campoFormulario($campo);
                 print "</div>";       
              
@@ -49,13 +70,26 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr>     
+                     
                         <?php 
                         //Valida se vem registro do DATASOURCE
                         if($dados["dados"]!=""){
                             //Percorre todos os registros
-                            foreach($dados["dados"] as $item=>$k) { 
+                            
+                            
+                            foreach($dados["dados"] as $item=>$k) {
+                                $contagem = 0;
+                                $primary_key = "";
+                                $descricao_principal = "";
+                                print "<tr>";
                                 foreach($k as $valor) { 
+                                    if($contagem==0){
+                                        $primary_key=$valor;
+                                    }
+                                    if($contagem==1){
+                                        $descricao_principal=$valor;
+                                    }
+                                    
                                     if(is_array($valor)){
                                         $linkPrimary = "";
                                         foreach($valor as $labelPrimary=>$valorPrimary){
@@ -69,19 +103,47 @@
                                 ?>
                                             <td><?= $valor ?></td>
                                 <?php   }
+                                $contagem++;
+                                }
+                             
+                                print "<td>";
                                 
-                                } ?>
-                                <td>
-                                    <a href='<?=$src."/cadastro?".$linkPrimary?>' class="btn btn-default" title="Alterar"><i class="fa fa-edit" name=""></i></a>
-                                    <a href='<?=$src."/excluir?".$linkPrimary?>' class="btn btn-danger" title="Excluir"><i class="fa fa-trash" name=""></i></a>
-                                </td>
+                                if(is_array($acoes)){
+                                    foreach ($acoes as $ka){
+                                        
+                                        
+                                        ?>
+                                            
+                                                <a href="<?=$ka["link"]."?".$linkPrimary?>" class="btn btn-default" title="<?=$ka["title"]?>"><i class="<?=$ka["icon"]?>" name="<?=$ka["title"]?>"></i></a>
+                                           
+                                        <?php
+                                    
+                                    }
+                                    
+                                }
                                 
+                                
+                                if($editar==TRUE){
+                                ?>
+                                
+                                    <a href="javascript:Cadastros('<?=$src."/cadastro?".$linkPrimary?>');" class="btn btn-default" title="Alterar"><i class="fa fa-edit" name=""></i></a>
+                              
+                               
                             <?php 
-                            
+                                }
+                                if($seleciona==TRUE){
+                              ?>     
+                              
+                                    <a href='javascript:thisJanela.seleciona(<?=$primary_key?>,"<?=$descricao_principal?>");' class="btn btn-default" title="Selecionar"><i class="fa fa-search" name=""></i></a>
+                              
+                                <?php 
+                                }
+                                print "</td>";
+                                print "</tr>";
                             } 
                         } 
                             ?>
-                    </tr>
+                    
             </tbody>
         </table>
     </div>      

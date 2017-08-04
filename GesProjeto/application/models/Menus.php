@@ -20,12 +20,14 @@ class Menus extends CI_Model {
         $db = $this->load->database("default");
         $prefixo = $this->session->userdata('prefixo');
         $this->db->where("dependencia",null);
+        $this->db->where("menu_administrativo",0);
         $this->db->order_by("descricao");
         $resultados = $this->db->get("menus")->result();
         $menu = "";
         
         foreach ($resultados as $item){
             $this->db->where("dependencia",$item->codigo_menu);
+            $this->db->where("menu_administrativo",0);
             $this->db->order_by("descricao");
             $resultados_filhos = $this->db->get("menus")->result();
             

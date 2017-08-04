@@ -18,6 +18,8 @@ class Campos extends CI_Model {
         private $estruturador;
         private $value;
         private $mascara;
+        private $dependencia;
+        private $descricao_dependencia;
         
         function __construct(){
             parent::__construct();
@@ -34,17 +36,43 @@ class Campos extends CI_Model {
             $this->setTamanho_maximo($xCadastro->TAMANHO_MAXIMO);
             $this->setTipo_dado($xCadastro->TIPO_DADO);
             $this->setComentario($xCadastro->COMENTARIO);
+            $this->setDependencia();
             $this->Estruturador();
             $this->setLabel_padrao();
             $this->setMascara();
             
+            
+        }
+        /**
+         * Retorna a fk do banco caso haja dependência
+         * @return type
+         */
+        function getDependencia() {
+            return $this->dependencia;
         }
         
+        function getDescricao_dependencia() {
+            return $this->descricao_dependencia;
+        }
+
+        function setDescricao_dependencia($descricao_dependencia) {
+            $this->descricao_dependencia = $descricao_dependencia;
+        }
+
+        
+        function setDependencia() {
+            $this->db->where("TABELA_ORIGINAL",$this->getTabela());
+            $this->db->where("COLUNA_ORIGINAL",$this->getColuna());
+            
+            $this->dependencia = $this->db->get("xreferencias")->result();
+            
+        }
+
         function getValue() {
             return $this->value;
         }
 
-        function setValue($value) {
+        function setValue($value) {     
             $this->value = $value;
         }
 
@@ -69,7 +97,6 @@ class Campos extends CI_Model {
             $this->db->where("tabela",$sufixo[1]);
             $this->db->where("coluna", $this->getColuna());
             $this->estruturador = $this->db->get("estruturador")->result()[0];
-         
         }
         
         /**
@@ -141,11 +168,7 @@ class Campos extends CI_Model {
         }
 
         function setNulo($nulo) {
-            if($nulo=="YES"){
-                $this->nulo = "required";
-            }else{
-                $this->nulo = "";
-            }
+            $this->nulo = $nulo;
             
         }
 
@@ -157,7 +180,13 @@ class Campos extends CI_Model {
                 $tipo_dado = "number";
             }else if($tipo_dado=="tinyint"){
                 $tipo_dado = "boolean";
-            }            
+            }    
+            else if($tipo_dado=="text"){
+                $tipo_dado = "memo";
+            }  
+            else if($tipo_dado=="date"){
+                $tipo_dado = "date";
+            }
             else{
                 $tipo_dado = "text";
             }
