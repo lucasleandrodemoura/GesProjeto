@@ -14,6 +14,15 @@ class Home extends CI_Controller {
         //$this->db->join("tabela","tabela.codigo = nome_tabela.codigo_ccc","left");        
         //$data["resultado_consulta"] = $this->db->get("nome_tabela")->result();
         
+        
+        //$dados["coluna_1"] = "teataeaet";
+        //$dados["coluna_2"] = "teataeaet";
+        //$dados["coluna_3"] = "teataeaet";
+        //$dados["coluna_4"] = "teataeaet";
+        //$this->db->insert("tabela",$dados);
+        
+        
+        
         $this->load->view("Includes/header");
         $this->load->view("Includes/header_nav");
       
