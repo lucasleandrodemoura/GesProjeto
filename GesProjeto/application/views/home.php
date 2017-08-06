@@ -1,5 +1,5 @@
 
-
+<div class="container">
     <!-- Título e botão para inserir novo registro -->
     <div class="header">
         <h3 class="header_title">Exemplo</h3>    
@@ -12,10 +12,11 @@
  <!-- Tabela de conteúdo -->
  
       <div class="row">
-          
-          <?=$dados?>
+          <div class="col-lg-12">
+                <?=$dados?>
+          </div>    
           
       </div>
-     
+  </div>   
  
   
