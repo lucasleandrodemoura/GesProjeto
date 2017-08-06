@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Apostas extends MY_Controller {
+class Exemplo extends MY_Controller {
     
     protected $tabela = "";
     protected $titulo = "";

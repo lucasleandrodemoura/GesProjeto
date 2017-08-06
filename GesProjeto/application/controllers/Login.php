@@ -5,7 +5,7 @@ class Login extends CI_Controller {
         
 	public function index()
 	{
-            $DB_Custom = $this->load->database($this->db);
+           
             
             $dados["img_logo"] = "icon_256.png";
             
