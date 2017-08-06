@@ -24,6 +24,9 @@ class Home extends CI_Controller {
         //$this->db->where("coluna",1);
         //$this->db->update("tabela",$dados);
         
+        //$this->db->where("coluna",1);
+        //$this->db->delete("tabela");
+        
         $this->load->view("Includes/header");
         $this->load->view("Includes/header_nav");
       
