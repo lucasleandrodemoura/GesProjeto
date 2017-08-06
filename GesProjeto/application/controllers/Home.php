@@ -7,6 +7,12 @@ class Home extends CI_Controller {
         $sql = "";
         
         $data["dados"] = "Ola pessoal";
+        //$this->db->select("campo as t, campo2 as g");
+        //$this->db->where("coluna","valor");
+        //$this->db->where("coluna!=valor");
+        //$this->db->order_by("campo,campo2");
+        //$this->db->join("tabela","tabela.codigo = nome_tabela.codigo_ccc","left");        
+        //$data["resultado_consulta"] = $this->db->get("nome_tabela")->result();
         
         $this->load->view("Includes/header");
         $this->load->view("Includes/header_nav");
