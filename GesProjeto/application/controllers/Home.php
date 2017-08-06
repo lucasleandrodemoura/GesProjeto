@@ -21,7 +21,8 @@ class Home extends CI_Controller {
         //$dados["coluna_4"] = "teataeaet";
         //$this->db->insert("tabela",$dados);
         
-        
+        //$this->db->where("coluna",1);
+        //$this->db->update("tabela",$dados);
         
         $this->load->view("Includes/header");
         $this->load->view("Includes/header_nav");
