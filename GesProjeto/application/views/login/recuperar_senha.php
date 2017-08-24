@@ -14,10 +14,10 @@ body {
     <?php echo form_open("login/recuperar_confirmar"); ?>
     <div class="form-signin">
         
-            <?php if($erro==1) { ?>
+            <?php if($erro=="1") { ?>
                 <h4 class="form-signin-heading bg-danger">Pelo menos um dos campos deve ser preenchido</h4>
             <?php } ?>
-            <?php if($erro==2) { ?>
+            <?php if($erro=="2") { ?>
                 <h4 class="form-signin-heading bg-danger">Tentativa de acessos esgotadas. Por gentileza, solicite uma nova senha.</h4>
             <?php } ?>    
             <label for="inputEmail" class="sr-only">Login</label>

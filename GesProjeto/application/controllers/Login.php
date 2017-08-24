@@ -89,9 +89,9 @@ class Login extends CI_Controller {
      * Chama a VIEW de formulário para lembrar senha
      * @author Lucas Moura <lmoura@universo.univates.br>
      */
-    function recuperar_senha(){
+    function recuperar_senha($erro=""){
         $this->load->view("Includes/header");
-        $erro["erro"] = "";
+        $erro["erro"] = $erro;
         $this->load->view("login/recuperar_senha",$erro);
         $this->load->view("Includes/footer");
     }
