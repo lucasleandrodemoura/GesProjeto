@@ -11,7 +11,7 @@
             
             <div class="navbar-header">
                 <a href="/" class="navbar-brand">
-                    Sistema
+                    Projetos
                 </a>
             </div>
             
