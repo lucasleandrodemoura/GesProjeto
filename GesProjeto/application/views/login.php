@@ -13,7 +13,7 @@ body {
 <div class="container">
     <?php echo form_open("login/logar"); ?>
     <div class="form-signin">
-        <img class="img img-responsive img-rounded" src="<?= base_url() ?>imagens/logomarca.jpg">
+        
             <?php if($erro==1) { ?>
                 <h4 class="form-signin-heading bg-danger">Login ou senha incorreto!</h4>
             <?php } ?>
