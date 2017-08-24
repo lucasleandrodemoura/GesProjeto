@@ -28,6 +28,7 @@ class Login extends CI_Controller {
         //Realzia a consulta na tabela de usuários
         $this->db->where("login",$login);
         $this->db->where("senha",$senha);
+        $this->db->where("tentativa_login<=3");
         $this->db->where("ativo",true);
         $resultados = $this->db->get("usuario")->result();
         foreach ($resultados as $item){
@@ -36,6 +37,12 @@ class Login extends CI_Controller {
             $infoSessao["id_usuario"] = $item->id_usuario;
             $infoSessao["nome"] = $item->nome;
             $infoSessao["logado"] = TRUE;
+            
+            //Reseta as tentativas de login
+            $data["tentativa_login"] = 0;
+            $this->db->where("id_usuario",$item->id_usuario);
+            $this->db->update("usuario",$contagem);
+            
             //Grava em sessão
             $this->session->set_userdata($infoSessao);
             
@@ -45,6 +52,22 @@ class Login extends CI_Controller {
         if($this->session->userdata('logado')){
             redirect("Home");
         }else{
+            //Caso o usuário conseguiu acertar o login, contabiliza uma tentativa de login
+            //No momento que chegar em 3 o mesmo irá resetar a senha
+            $this->db->where("login",$login);
+            $this->db->where("ativo",true);
+            $login_acerto = $this->db->get("usuario")->result();
+            foreach($login_acerto as $item ){
+                //Incrementa mais uma tentativa para este login
+                $contagem["tentativa_login"] = $item->tentativa_login++;
+                $this->db->where("id_usuario",$item->id_usuario);
+                $this->db->update("usuario",$contagem);
+                //Chegando acima de 3 tentativas manda recuperar a senha
+               if($contagem["tentativa_login"]>3){
+                 redirect("Login/recuperar_senha/2");
+               }
+                
+            }
             redirect("Login/1");
         }
         
@@ -79,8 +102,8 @@ class Login extends CI_Controller {
     */
     function recuperar_confirmar(){
         $this->load->helper('string');
-        $login = $this->input->post("login");
-        $email = $this->input->post("email");
+        $login = $this->input->get("login");
+        $email = $this->input->get("email");
         //Monto o where
         if($login!=""){
             $this->db->where("login",$login);
@@ -95,6 +118,7 @@ class Login extends CI_Controller {
             foreach ($resultado as $item){
                 //Gero uma nova senha
                 $data["senha"] = random_string('alnum', 7);
+                $data["tentativa_login"] = 0;
                 //Altero esta senha no banco
                 $this->db->where("id_usuario",$item->id_usuario);
                 $this->db->update("usuario",$data);
