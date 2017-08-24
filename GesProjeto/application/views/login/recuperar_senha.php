@@ -22,6 +22,7 @@ body {
             <label for="inputPassword" class="sr-only">ou E-mail</label>
             <input type="text" id="inputEmail" name="email" class="form-control" placeholder="E-mail">
             <button class="btn btn-lg btn-warning btn-block" type="submit">Recuperar</button>
+            <a href="<?= base_url() ?>login" style="text-align: center">Cancelar</a>
     </div>
     </form>
 </div>   
