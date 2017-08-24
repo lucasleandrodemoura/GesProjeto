@@ -8,10 +8,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
     
     //Tela de login inicial
-    function index(){
+    function index($erro=""){
          
         $this->load->view("Includes/header");
-        $data["erro"] = "";
+        $data["erro"] = $erro;
         $this->load->view("login/login",$data);
         $this->load->view("Includes/footer");
         
@@ -68,7 +68,8 @@ class Login extends CI_Controller {
      */
     function recuperar_senha(){
         $this->load->view("Includes/header");
-        $this->load->view("login/recuperar_senha");
+        $erro["erro"] = "";
+        $this->load->view("login/recuperar_senha",$erro);
         $this->load->view("Includes/footer");
     }
     
@@ -76,7 +77,7 @@ class Login extends CI_Controller {
      * Função que gera uma senha aleatoria, troca no banco e envia por e-mail a mesma
      * @author Lucas Moura <lmoura@universo.univates.br>
     */
-    function confirmar_envio(){
+    function recuperar_confirmar(){
         $this->load->helper('string');
         $login = $this->input->post("login");
         $email = $this->input->post("email");
@@ -101,9 +102,12 @@ class Login extends CI_Controller {
                 //Disparo um e-mail para o usuário com a nova senha
                 
             }
-            recuperar_senha("Login/2");
+            redirect("Login/2");
         }else{
-            recuperar_senha("Login/recuperar_senha/1");
+            $this->load->view("Includes/header");
+            $erro["erro"] = 1;
+            $this->load->view("login/recuperar_senha",$erro);
+            $this->load->view("Includes/footer");
         }
         
         
