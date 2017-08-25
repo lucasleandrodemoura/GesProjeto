@@ -41,7 +41,7 @@ class Login extends CI_Controller {
             //Reseta as tentativas de login
             $data["tentativa_login"] = 0;
             $this->db->where("id_usuario",$item->id_usuario);
-            $this->db->update("usuario",$contagem);
+            $this->db->update("usuario",$data);
             
             //Grava em sessão
             $this->session->set_userdata($infoSessao);
