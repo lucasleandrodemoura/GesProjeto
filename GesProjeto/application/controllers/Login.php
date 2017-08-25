@@ -155,25 +155,25 @@ class Login extends CI_Controller {
         $data["login"] = $this->input->post("login");
         $data["senha"] = $this->input->post("senha");
         $data["email"] = $this->input->post("email");
-        $data["erro"] = "";
+        $erro["erro"] = "";
         
         //Avalia regras
         $this->db->select("COUNT(*) as contagem");
         $this->db->where("login",$data["login"]);
         if($this->db->get("usuario")->result()[0]->contagem>0){
-            $data["erro"] = 1;
+            $erro["erro"] = 1;
         }
         
         $this->db->select("COUNT(*) as contagem");
         $this->db->where("email",$data["email"]);
         if($this->db->get("usuario")->result()[0]->contagem>0){
-            $data["erro"] = 2;
+            $erro["erro"] = 2;
         }
         
         
-        if($data["erro"]!=""){
+        if($erro["erro"]!=""){
             $this->load->view("Includes/header");
-            $this->load->view("login/cadastro",$data);
+            $this->load->view("login/cadastro",$erro);
             $this->load->view("Includes/footer");
         }else{
             //Faz a inclusão
