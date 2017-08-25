@@ -138,6 +138,50 @@ class Login extends CI_Controller {
         
     }
     
+    
+    /**
+     * Abre a tela de cadastro de usuários
+     */
+    function cadastro(){
+        $this->load->view("Includes/header");
+        $data["erro"] = "";
+        $this->load->view("login/cadastro",$data);
+        $this->load->view("Includes/footer");
+    }
+    
+    function cadastrar(){
+        
+        $data["nome"] = $this->input->post("nome");
+        $data["login"] = $this->input->post("login");
+        $data["senha"] = $this->input->post("senha");
+        $data["email"] = $this->input->post("email");
+        $data["erro"] = "";
+        
+        //Avalia regras
+        $this->db->select("COUNT(*) as contagem");
+        $this->db->where("login",$data["login"]);
+        if($this->db->get("usuario")->result()[0]->contagem>0){
+            $data["erro"] = 1;
+        }
+        
+        $this->db->select("COUNT(*) as contagem");
+        $this->db->where("email",$data["email"]);
+        if($this->db->get("usuario")->result()[0]->contagem>0){
+            $data["erro"] = 2;
+        }
+        
+        
+        if($data["erro"]!=""){
+            $this->load->view("Includes/header");
+            $this->load->view("login/cadastro",$data);
+            $this->load->view("Includes/footer");
+        }else{
+            //Faz a inclusão
+            $this->db->insert("usuario",$data);
+            redirect("Login/3");
+        }
+    }
+    
    
 }
             
