@@ -19,6 +19,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Meus dados</a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link" href="<?= base_url()?>Login/logout">Sair</a>
+      </li>
     </ul>
   </div>
 </nav>
