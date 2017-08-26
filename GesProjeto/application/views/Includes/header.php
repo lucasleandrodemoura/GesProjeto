@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="<?=base_url()?>Includes/Responsivo/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?=base_url()?>Includes/thema.css">  
 </head>
-<body style="padding-top:0px">
+<body style="padding-top:50px">
     
   
  

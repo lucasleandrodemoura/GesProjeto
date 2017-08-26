@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Controle que realizar autenticações e todo o sistema envolvendo o login e segurança
  * @date 2017-08-21
  */
-class Login extends CI_Controller {
+class Login extends MY_Controller {
     
     //Tela de login inicial
     function index($erro=""){
@@ -145,7 +145,23 @@ class Login extends CI_Controller {
     function cadastro(){
         $this->load->view("Includes/header");
         $data["erro"] = "";
+        $data["dados"] = null;
         $this->load->view("login/cadastro",$data);
+        $this->load->view("Includes/footer");
+    }
+    
+    /**
+     * Responsável por editar o cadastro do usuário logado
+     */
+    function meus_dados(){
+        $this->autentica();
+        $id_usuario = $this->session->userdata('id_usuario');
+        $this->db->where("id_usuario",$id_usuario);
+        $erro["dados"] = $this->db->get("usuario")->result()[0];
+        $this->load->view("Includes/header");
+        $this->load->view("Includes/header_nav");
+        $erro["erro"] = "";
+        $this->load->view("login/cadastro",$erro);
         $this->load->view("Includes/footer");
     }
     
