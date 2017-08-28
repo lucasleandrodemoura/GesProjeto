@@ -102,8 +102,8 @@ class Login extends MY_Controller {
     */
     function recuperar_confirmar(){
         $this->load->helper('string');
-        $login = $this->input->get("login");
-        $email = $this->input->get("email");
+        $login = $this->input->post("login");
+        $email = $this->input->post("email");
         //Monto o where
         if($login!=""){
             $this->db->where("login",$login);
@@ -124,10 +124,14 @@ class Login extends MY_Controller {
                 $this->db->update("usuario",$data);
                 
                 //Disparo um e-mail para o usuário com a nova senha
+                $mensagem = "Olá ".$item->nome." (".$item->login.") sua nova senha para o site ". base_url()." será ".$data["senha"];
+                $this->enviar_email($item->email, "Recuperação de senha", $mensagem);
+                
                 
             }
             redirect("Login/2");
-        }else{
+        }
+        else{
             $this->load->view("Includes/header");
             $erro["erro"] = 1;
             $this->load->view("login/recuperar_senha",$erro);
@@ -194,6 +198,8 @@ class Login extends MY_Controller {
         }else{
             //Faz a inclusão
             $this->db->insert("usuario",$data);
+            $mensagem = "Olá ".$data["nome"]." (".$data["login"].") sua nova senha para o site ". base_url()." será ".$data["senha"];
+            $this->enviar_email($data["email"], "Cadastrado no sistema", $mensagem);
             redirect("Login/3");
         }
     }

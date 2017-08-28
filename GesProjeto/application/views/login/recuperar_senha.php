@@ -20,9 +20,9 @@ body {
             <?php if($erro=="2") { ?>
                 <h4 class="form-signin-heading bg-danger">Tentativa de acessos esgotadas. Por gentileza, solicite uma nova senha.</h4>
             <?php } ?>    
-            <label for="inputEmail" class="sr-only">Login</label>
+            <label for="inputEmail">Login</label>
             <input type="text" id="inputEmail" name="login" class="form-control" placeholder="Login" autofocus>
-            <label for="inputPassword" class="sr-only">ou E-mail</label>
+            <label for="inputPassword">ou E-mail</label>
             <input type="text" id="inputEmail" name="email" class="form-control" placeholder="E-mail">
             <button class="btn btn-lg btn-warning btn-block" type="submit">Recuperar</button>
             <a href="<?= base_url() ?>login" style="text-align: center">Cancelar</a>
