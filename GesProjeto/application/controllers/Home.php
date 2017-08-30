@@ -11,6 +11,10 @@ class Home extends MY_Controller {
         $this->load->view("Includes/footer");
     }
     
+    function test(){
+        $this->geraPDF("etatea", "lçmteaçmatelçatmlçaet");
+    }
+    
     function teste(){
         $this->load->view("Includes/header");
         $this->load->view("Includes/header_nav");

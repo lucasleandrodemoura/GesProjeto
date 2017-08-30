@@ -20,6 +20,20 @@ class MY_Controller extends CI_Controller {
     }
     
     /**
+     * Função que gera um PDF
+     * @author Lucas Leandro de Moura <lmoura@universo.univates.br>
+     * @param String $nome Nome do arquivo
+     * @param html $conteudo Conteúdo que terá no PDF
+     */
+    protected function geraPDF($nome,$conteudo){
+        require_once '/var/www/gestaoprojetos/Includes/mpdf/vendor/autoload.php';
+
+        $mpdf = new mPDF();
+        $mpdf->WriteHTML($conteudo);
+        $mpdf->Output();
+    }
+    
+    /**
      * Função que envia e-mails para um destinatário
      * @link https://www.codeigniter.com/user_guide/libraries/email.html Referência
      * @author Lucas Leandro de Moura <lmoura@universo.univates.br>
