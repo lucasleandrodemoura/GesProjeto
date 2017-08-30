@@ -26,8 +26,8 @@ class MY_Controller extends CI_Controller {
      * @param html $conteudo Conteúdo que terá no PDF
      */
     protected function geraPDF($nome,$conteudo){
+        $this->autentica();
         require_once '/var/www/gestaoprojetos/Includes/mpdf/vendor/autoload.php';
-
         $mpdf = new mPDF();
         $mpdf->WriteHTML($conteudo);
         $mpdf->Output();
