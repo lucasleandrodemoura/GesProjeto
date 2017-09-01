@@ -6,9 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container">
     <?php 
         if($dados) { 
-            echo form_open("login/editar"); 
+            echo form_open("usuarios/editar"); 
         }else{
-            echo form_open("login/cadastrar"); 
+            echo form_open("usuarios/cadastrar"); 
         }
     ?>
     <div class="form-signin">

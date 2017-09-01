@@ -31,7 +31,7 @@ body {
             <br>
             <div class="row">
                 <div class="col-6"><a href="<?= base_url() ?>login/recuperar_senha" style="text-align: center">Esqueci a senha</a></div>
-                <div class="col-6"><a href="<?= base_url() ?>login/cadastro" style="text-align: center">Cadastre-se</a></div>
+                <div class="col-6"><a href="<?= base_url() ?>usuarios/cadastro" style="text-align: center">Cadastre-se</a></div>
             </div>
             
             
