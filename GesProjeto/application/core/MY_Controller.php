@@ -65,6 +65,50 @@ class MY_Controller extends CI_Controller {
 
         return $this->email->send();
     }
+    
+    /**
+     * Função que retorna uma DataTable preenchida
+     * @param array $header Cabecalho da tabela
+     * @param array $linhas Dados que estarão no banco de dados
+     * @param type $editar Haverá botão de Editar?
+     * @param type $deletar Haverá botão de deletar?
+     * @param type $visualizar Haverá botão de Visualizar?
+     * @author Lucas Leandro de Moura <lmoura@universo.univates.br>
+     * @return html Tabela em formato HTML
+     */
+    protected function table($header,$linhas,$editar="",$deletar="",$visualizar=""){
+        $retorno = "<table class='table'>";
+        $retorno.= "    <thread>";
+        $retorno.= "        <tr>";
+        
+        //Adicionando o cabecalho da tabela
+        foreach($header as $item){
+                    $retorno.= "<th>";
+                        $retorno.= $item["titulo"];
+                    $retorno.= "</th>";
+        }
+        $retorno.= "        </tr>";
+        $retorno.= "    </thread>";
+        
+        
+        //Adicionando as linhas da tabela
+        foreach($linhas as $registro){
+            $retorno.= "        <tr>";
+            foreach($registro["dados"] as $item){
+                        $retorno.= "<td>";
+                            $retorno.= $item["titulo"];
+                        $retorno.= "</td>";
+            }
+            $retorno.= "        </tr>";
+        }
+        
+        
+        $retorno.= "</table>";
+        
+        
+        
+        return $retorno;
+    }
         
 
 }
