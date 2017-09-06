@@ -8,6 +8,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller {
     protected $codigo_usuario; 
     /**
+     *Variável que contém o cabecalho da table
+     * @var array 
+     */
+    protected $cabecalho = array();
+    /**
+     *Linhas da tabela
+     * @var array
+     */
+    protected $linhas = array();
+    /**
      * Função responsável em realizar a checagem se existe uma sessão ativa
      * Esta função poder ser utilizado nos controladores que precisam de controle de acesso
      */
@@ -69,7 +79,7 @@ class MY_Controller extends CI_Controller {
     /**
      * Função que retorna uma DataTable preenchida
      * @param array $header Cabecalho da tabela
-     * @param array $linhas Dados que estarão no banco de dados
+     * @param array $linhas Dados que estarão no banco de dados array[]["dados"] = array("","","","")
      * @param type $editar Haverá botão de Editar?
      * @param type $deletar Haverá botão de deletar?
      * @param type $visualizar Haverá botão de Visualizar?
@@ -77,7 +87,7 @@ class MY_Controller extends CI_Controller {
      * @return html Tabela em formato HTML
      */
     protected function table($header,$linhas,$editar="",$deletar="",$visualizar=""){
-        $retorno = "<table class='table'>";
+        $retorno = "<table class='table table-striped table-hover table-bordered'>";
         $retorno.= "    <thread>";
         $retorno.= "        <tr>";
         
@@ -89,14 +99,13 @@ class MY_Controller extends CI_Controller {
         }
         $retorno.= "        </tr>";
         $retorno.= "    </thread>";
-        
-        
+ 
         //Adicionando as linhas da tabela
         foreach($linhas as $registro){
             $retorno.= "        <tr>";
             foreach($registro["dados"] as $item){
                         $retorno.= "<td>";
-                            $retorno.= $item["titulo"];
+                            $retorno.= $item;
                         $retorno.= "</td>";
             }
             $retorno.= "        </tr>";
@@ -108,6 +117,18 @@ class MY_Controller extends CI_Controller {
         
         
         return $retorno;
+    }
+    
+    
+    function index(){
+        $this->autentica();
+        $this->load->view("Includes/header");
+        $this->load->view("Includes/header_nav");
+        
+        $dados["tabela"] =$this->table($this->cabecalho, $this->linhas);
+        
+        $this->load->view("home",$dados);
+        $this->load->view("Includes/footer");
     }
         
 
