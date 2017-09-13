@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','file','form');
+$autoload['helper'] = array('url','file','form',"l_campos");
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['config'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-//$autoload['model'] = array("Campos","Menus","Cadastros");
+//hel$autoload['model'] = array("camposPer","Menus","Cadastros");
