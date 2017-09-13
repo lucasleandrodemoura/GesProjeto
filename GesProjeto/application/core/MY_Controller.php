@@ -17,6 +17,13 @@ class MY_Controller extends CI_Controller {
      * @var array
      */
     protected $linhas = array();
+    
+    /**
+     *Nome da tela
+     * @var String 
+     */
+    protected $titulo = "";
+
     /**
      * Função responsável em realizar a checagem se existe uma sessão ativa
      * Esta função poder ser utilizado nos controladores que precisam de controle de acesso
@@ -119,15 +126,30 @@ class MY_Controller extends CI_Controller {
         return $retorno;
     }
     
+  
+    function setCabecalho($cabecalho) {
+        $this->cabecalho = $cabecalho;
+    }
+
+    function setLinhas($linhas) {
+        $this->linhas = $linhas;
+    }
     
+    function setTitulo(String $titulo) {
+        $this->titulo = $titulo;
+    }
+
+    
+        
     function index(){
         $this->autentica();
         $this->load->view("Includes/header");
         $this->load->view("Includes/header_nav");
         
         $dados["tabela"] =$this->table($this->cabecalho, $this->linhas);
+        $dados["titulo"] = $this->titulo;
         
-        $this->load->view("home",$dados);
+        $this->load->view("default_list",$dados);
         $this->load->view("Includes/footer");
     }
         
