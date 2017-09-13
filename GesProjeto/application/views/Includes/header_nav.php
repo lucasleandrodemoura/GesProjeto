@@ -13,7 +13,7 @@
           Cadastros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Projetos</a>
+          <a class="dropdown-item" href="<?= base_url()?>Projeto">Projetos</a>
         </div>
       </li>
       <li class="nav-item">
