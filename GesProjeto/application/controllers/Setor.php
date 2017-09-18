@@ -5,6 +5,7 @@ class Setor extends MY_Controller {
 
     public function index() {
         //Defino o título da página
+        
         $this->setTitulo("Setores");
         $cabecalho = array(
             array("titulo"=>"Código"),
@@ -38,6 +39,7 @@ class Setor extends MY_Controller {
     }
     
     public function cadastro() {
+  
         $this->setTabela("setor");
         $this->setTitulo("Cadastro de setor");
         $this->setAcao("setor/cadastrar");

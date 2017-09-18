@@ -1,4 +1,12 @@
-
+<script type="text/javascript">
+    /**
+     * Abre a tela de um novo cadastro
+     * @returns {undefined}
+     */
+    function Novo(){
+        location.href="<?=base_url()?><?=uri_string()?>/cadastro";
+    }
+    </script>
 <div class="container-fluid">
     <?php if($titulo){?>
     <div class="row">
@@ -10,7 +18,6 @@
                 $data = array(
                   "name"=>"botao_novo",
                   "class"=>"btn btn-default",
-                  
                   "onclick"=>"javascript:Novo();"
                 );
                 print form_button($data, "Novo");
