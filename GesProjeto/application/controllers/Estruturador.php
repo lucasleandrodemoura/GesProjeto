@@ -1,37 +1,43 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Projeto extends MY_Controller {
+/**
+ * Controlador responsável por construir o estruturador de dados
+ * Com estas informações, é possível construir telas genéricas de cadastro
+ */
+class Estruturador extends MY_Controller {
     //Utilização padrão
     
     public function index() {
         //Defino o título da página
-        $this->setTitulo("Projetos");
+        $this->setTitulo("Estruturador");
         
         $cabecalho = array(
             array("titulo"=>"Código"),
-            array("titulo"=>"Nome"),
-            array("titulo"=>"Previsão de Conclusão"),
-            array("titulo"=>"% Concluído"),
-            array("titulo"=>"Ações")
+            array("titulo"=>"Tabela"),
+            array("titulo"=>"Coluna"),
+            array("titulo"=>"Rótulo"),
+            array("titulo"=>"Tipo de Campo"),
+            array("titulo"=>"Tipo de Valor"),
+            array("titulo"=>"Ordenação")
         );
         //Defino o cabecalho da tabela
         $this->setCabecalho($cabecalho);
         
         
         $dados = array();
-        $resultados = $this->db->get("projeto")->result();
+        $resultados = $this->db->get("estruturador")->result();
         foreach($resultados as $item){
-          $indices = array(array("id_projeto"=>$item->id_projeto));  
+          $indices = array(array("codigo_campo"=>$item->codigo_campo));  
             
           $dados[]["dados"] = array(
-              $item->id_projeto,
-              $item->descricao_resumida,
-              L_label_data($item->data_inclusao, "d/m/Y"),
-              L_progress_bar(20.50),
-              L_Deletar($indices, "Projeto/excluir")." ".
-              L_Editar($indices, "Projeto/editar")." ".
-              L_Abrir($indices, "Projeto/abrir")
+              $item->codigo_campo,
+              $item->tabela,
+              $item->coluna,
+              $item->rotulo,
+              $item->tipo_campo,
+              $item->tipo_valor,
+              $item->ordenacao
               );  
         }
         //Defino os dados da tabela
@@ -44,15 +50,9 @@ class Projeto extends MY_Controller {
     public function cadastro() {
         $this->setTabela("projeto");
         $this->setTitulo("Cadastro de projetos");
-        $this->setAcao("projeto/cadastrar");
-        parent::cadastro();
-    }
-    
-    public function cadastrar() {
-        $this->setTabela("projeto");
+        
        
-        parent::cadastrar();
-        redirect("Projeto");
+        parent::cadastro();
     }
     
     /**

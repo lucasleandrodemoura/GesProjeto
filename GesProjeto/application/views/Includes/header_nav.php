@@ -14,7 +14,22 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="<?= base_url()?>Projeto">Projetos</a>
+          <a class="dropdown-item" href="<?= base_url()?>Setor">Setor</a>
         </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Configurações
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="<?= base_url()?>Estruturador">Estruturador de Dados</a>
+          <a class="dropdown-item" href="<?= base_url()?>Pais">Países</a>
+          <a class="dropdown-item" href="<?= base_url()?>Estado">Estados</a>
+          <a class="dropdown-item" href="<?= base_url()?>Cidade">Cidades</a>
+        </div>
+        
+          
+          
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url()?>Usuarios/meus_dados">Meus dados</a>

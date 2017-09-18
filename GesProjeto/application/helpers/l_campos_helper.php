@@ -47,6 +47,28 @@ if ( ! function_exists('L_label_data'))
       
 }
 
+
+
+
+if ( ! function_exists('L_boolean'))
+{
+
+        /**
+         * Formata valores booleanos
+         * @author Lucas Leandro de Moura
+         * @return string Label Contendo o valor formatado
+         */
+	function L_boolean($data)
+	{
+            $retorno = "Não";
+            if($data=="t"){
+                $retorno = "Sim";
+            }
+            return $retorno;
+        }
+      
+}
+
 if ( ! function_exists('L_Editar'))
 {
 /**

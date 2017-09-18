@@ -13,6 +13,7 @@ body {
 <div class="container">
     <?php echo form_open("login/logar"); ?>
     <div class="form-signin">
+            <img src="imagens/logomarca.jpg" id="logomarca" class="img img-fluid">
         
             <?php if($erro==1) { ?>
                 <h4 class="form-signin-heading bg-danger">Login ou senha incorreto!</h4>
@@ -23,6 +24,7 @@ body {
             <?php if($erro==3) { ?>
                 <h4 class="form-signin-heading bg-warning">Usuário cadastrado com sucesso!</h4>
             <?php } ?>
+            
             <label for="inputEmail" class="sr-only">Usuário</label>
             <input type="text" id="inputEmail" name="login" class="form-control" placeholder="Login" required autofocus>
             <label for="inputPassword" class="sr-only">Senha</label>

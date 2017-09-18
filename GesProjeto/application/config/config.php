@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://projetos.adevale.com.br/';
+$config['base_url']	= 'http://projetos.adevale.com.br';
 
 /*
 |--------------------------------------------------------------------------

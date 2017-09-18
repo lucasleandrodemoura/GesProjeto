@@ -17,6 +17,36 @@ class MY_Controller extends CI_Controller {
      * @var array
      */
     protected $linhas = array();
+    /**
+     *Qual o nome da tabela no banco de dados, que se trata este controlador
+     * @var String
+     */
+    protected $tabela = "";
+
+    /**
+     *Define os dados de uma grid
+     * @var array Dados da tabela 
+     */
+    protected $dados = array();
+
+    /**
+     *DataSource para realizar upgrade ou insert
+     * @var array() Grade de informações
+     */
+    protected $data = array();
+    
+    /**
+     * Ação ao submeter o formulário padrão
+     * @var String 
+     */
+    protected $acao = "";
+    
+
+    /**
+     *Define a View de cadastro padrão
+     * @var String 
+     */
+    protected $view_cadastro_padrao = "default_cadastro";
     
     /**
      *Nome da tela
@@ -34,6 +64,7 @@ class MY_Controller extends CI_Controller {
         }else{
             redirect("Login");
         }
+       
     }
     
     /**
@@ -126,7 +157,15 @@ class MY_Controller extends CI_Controller {
         return $retorno;
     }
     
-  
+    /**
+     * 
+     * @param String $tabela Informe a tabela
+     */
+    function setTabela(String $tabela) {
+        $this->tabela = $tabela;
+    }
+
+      
     function setCabecalho($cabecalho) {
         $this->cabecalho = $cabecalho;
     }
@@ -152,6 +191,88 @@ class MY_Controller extends CI_Controller {
         $this->load->view("default_list",$dados);
         $this->load->view("Includes/footer");
     }
+    
+    function setDados(array $dados) {
+        $this->dados = $dados;
+    }
+    
+    
+    function setAcao(String $acao) {
+        $this->acao = $acao;
+    }
+    
+    /*
+     * Define Componentes no dataSource
+     * @author Lucas Leandro de Moura
+     */
+    function setData(array $data) {
+         $this->data = $data;
+    }
+
+    
+            
+    /**
+     * Tela padrão de cadastro
+     * @author Lucas Leandro de Moura
+     */
+    function cadastro(){
+        $this->autentica();
+        $this->load->view("Includes/header");
+        $this->load->view("Includes/header_nav");
+        
+        $dados["tabela"] =$this->table($this->cabecalho, $this->linhas);
+        $dados["titulo"] = $this->titulo;
+        $dados["acao"] = $this->acao;
+        
+        $this->db->where("tabela",$this->tabela);
+        $this->db->where("exibir_cadastro",true);
+        $this->db->order_by("ordenacao ASC");
+        $dados["campos"] = $this->db->get("estruturador")->result();
+        
+        //Define os dados do formulário, caso for edição
+        if(sizeof($this->dados)==1){
+            $dados["dados"] = (array) $this->dados[0];
+            
+        }else{
+            $dados["dados"] = "";
+        }
+   
+        $this->load->view($this->view_cadastro_padrao,$dados);
+        $this->load->view("Includes/footer");
+    }
+    
+    /**
+     * Função que realiza um cadastro genérico
+     * @author Lucas Leandro de Moura
+     */
+    function cadastrar(){
+        $this->autentica();
+        $infoTela = $this->input->post();
+       
+        
+        foreach($infoTela as $key=>$valor){
+            if($key!="btn_salvar"){
+                $this->data[$key] = $valor;
+            }
+        }
+        $this->db->insert($this->tabela,$this->data);
+    }
+    
+    function getView_cadastro_padrao(): String {
+        return $this->view_cadastro_padrao;
+    }
+
+    /**
+     * Define uma nova view de cadastro padrão
+     * @author Lucas Moura<lmoura@universo.univates.br>
+     * @param String $view_cadastro_padrao
+     */
+    function setView_cadastro_padrao(String $view_cadastro_padrao) {
+        $this->view_cadastro_padrao = $view_cadastro_padrao;
+    }
+
+
+    
         
 
 }
