@@ -8,6 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Estruturador extends MY_Controller {
     //Utilização padrão
     
+
+
     public function index() {
         //Defino o título da página
         $this->setTitulo("Estruturador");
@@ -48,11 +50,18 @@ class Estruturador extends MY_Controller {
     }
     
     public function cadastro() {
-        $this->setTabela("projeto");
-        $this->setTitulo("Cadastro de projetos");
+        $this->setTabela("estruturador");
+        $this->setTitulo("Cadastro de tabelas");
+        $this->setAcao("estruturador/cadastrar");
         
        
         parent::cadastro();
+    }
+    
+    public function cadastrar() {
+        $this->setTabela("estruturador");
+        parent::cadastrar();
+        redirect("Estruturador");
     }
     
     /**
@@ -61,11 +70,11 @@ class Estruturador extends MY_Controller {
      * @param type $indice
      */
     public function editar() {
-        $this->setTabela("projeto");
-        $this->setTitulo("Cadastro de projetos");
+        $this->setTabela("estruturador");
+        $this->setTitulo("Cadastro de Estruturador");
        
-        $this->db->where("id_projeto",$this->input->get("id_projeto"));
-        $this->setDados($this->db->get("projeto")->result());
+        $this->db->where("codigo_campo",$this->input->get("codigo_campo"));
+        $this->setDados($this->db->get("estruturador")->result());
         
         parent::cadastro();
     }

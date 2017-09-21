@@ -255,6 +255,7 @@ class MY_Controller extends CI_Controller {
                 $this->data[$key] = $valor;
             }
         }
+       
         $this->db->insert($this->tabela,$this->data);
     }
     
