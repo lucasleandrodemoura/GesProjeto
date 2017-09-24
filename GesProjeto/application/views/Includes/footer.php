@@ -1,6 +1,23 @@
-   
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/dist/js/sb-admin-2.js"></script>
+
+    
+     <!-- DataTables JavaScript -->
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables/js/jquery.dataTables.js"></script>
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables-plugins/dataTables.bootstrap.js"></script>
+    <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <script src="<?=base_url()?>Includes/thema.js"></script>
+    
 </body>
 </html>

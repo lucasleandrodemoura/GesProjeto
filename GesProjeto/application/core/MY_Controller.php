@@ -125,8 +125,8 @@ class MY_Controller extends CI_Controller {
      * @return html Tabela em formato HTML
      */
     protected function table($header,$linhas,$editar="",$deletar="",$visualizar=""){
-        $retorno = "<table class='table table-striped table-hover table-bordered'>";
-        $retorno.= "    <thread>";
+        $retorno = "<table  class='table table-striped table-bordered table-hover' id='dataTables-dados'>";
+        $retorno.= "    <thead>";
         $retorno.= "        <tr>";
         
         //Adicionando o cabecalho da tabela
@@ -136,8 +136,8 @@ class MY_Controller extends CI_Controller {
                     $retorno.= "</th>";
         }
         $retorno.= "        </tr>";
-        $retorno.= "    </thread>";
- 
+        $retorno.= "    </thead>";
+        $retorno.= "    <tbody>";
         //Adicionando as linhas da tabela
         foreach($linhas as $registro){
             $retorno.= "        <tr>";
@@ -148,7 +148,7 @@ class MY_Controller extends CI_Controller {
             }
             $retorno.= "        </tr>";
         }
-        
+         $retorno.= "    </tbody>";
         
         $retorno.= "</table>";
         
