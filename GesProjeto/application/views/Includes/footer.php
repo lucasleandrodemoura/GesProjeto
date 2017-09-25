@@ -16,7 +16,7 @@
     <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables/js/jquery.dataTables.js"></script>
     <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables-plugins/dataTables.bootstrap.js"></script>
     <script src="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
-
+    <script src="<?=base_url()?>Includes/Janelas/Janelas.js"></script>
     <script src="<?=base_url()?>Includes/thema.js"></script>
     
 </body>

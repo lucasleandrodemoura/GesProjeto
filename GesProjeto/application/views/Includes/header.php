@@ -23,8 +23,9 @@
     <!-- DataTables Responsive CSS -->
     <link href="<?=base_url()?>Includes/TemplateSB/sb_admin/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     
-    
+    <link rel="stylesheet" href="<?=base_url()?>Includes/Janelas/Janelas.css"> 
     <link rel="stylesheet" href="<?=base_url()?>Includes/thema.css">  
+
   
 </head>
 <body>

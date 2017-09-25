@@ -218,7 +218,6 @@ class MY_Controller extends CI_Controller {
     function cadastro(){
         $this->autentica();
         $this->load->view("Includes/header");
-        $this->load->view("Includes/header_nav");
         
         $dados["tabela"] =$this->table($this->cabecalho, $this->linhas);
         $dados["titulo"] = $this->titulo;

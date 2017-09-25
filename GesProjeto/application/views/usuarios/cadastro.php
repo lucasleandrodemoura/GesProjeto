@@ -3,7 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 
-<div class="container">
+ <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h1>Meus dados</h1>
+                       </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                
+                    
+                    <div class="col-lg-12">
     <?php 
         if($dados) { 
             echo form_open("usuarios/editar"); 
@@ -58,4 +71,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             
    <?php echo form_close(); ?>
-</div>   
+</div>  
+            </div>
+            </div>

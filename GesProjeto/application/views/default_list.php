@@ -4,7 +4,10 @@
      * @returns {undefined}
      */
     function Novo(){
-        location.href="<?=base_url()?><?=uri_string()?>/cadastro";
+        var url = "<?=base_url()?><?=uri_string()?>/cadastro";
+        top.window.janela = new Janela("novo", url, "Cadastro",'500','400');
+        top.window.janela.onCloseRefresh(window);
+        top.window.janela.show();
     }
     </script>
  <div id="page-wrapper">

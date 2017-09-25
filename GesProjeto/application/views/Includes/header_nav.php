@@ -140,13 +140,13 @@
                             
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="<?= base_url(); ?>Pais"><i class="fa fa-map-o fa-fw"></i>Países</a>
+                                                <a href="<?= base_url(); ?>Pais"><i class="fa fa-globe fa-fw"></i>Países</a>
                                             </li>
                                             <li>
-                                                <a href="<?= base_url(); ?>Estado">Estados</a>
+                                                <a href="<?= base_url(); ?>Estado"><i class="fa fa-map-o fa-fw"></i>Estados</a>
                                             </li>
                                              <li>
-                                                <a href="<?= base_url(); ?>Cidade">Cidades</a>
+                                                <a href="<?= base_url(); ?>Cidade"><i class="fa fa-map-marker fa-fw"></i>Cidades</a>
                                             </li>
                                         </ul>
                                 
