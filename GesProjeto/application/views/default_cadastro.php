@@ -1,27 +1,12 @@
-
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="page-header">
-            <h1><?= $titulo ?></h1>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="row">
-
-
-
-    <?php
+<div class="block-grid">
+    <div style="WIDTH: 800px" class="content">
+<?php
     print form_open($acao, array("class" => "form"));
     print ' <div class="row">';
 
     foreach ($campos as $item) {
 
-        print '<div class="col-md-6">';
+        print '<div class="col-md-6 col-sm-6 col-xs-6">';
         //Define a label
         print form_label($item->rotulo, "label_" . $item->codigo_campo);
         //Caracteristicas do campo
@@ -69,10 +54,5 @@
     print "</div>";
     print form_close();
     ?>
-
-
-
+        </div>
 </div>
-
-
-
