@@ -14,7 +14,7 @@ class Login extends MY_Controller {
         $data["erro"] = $erro;
         $this->load->view("login/login",$data);
         $this->load->view("Includes/footer");
-        
+         
     }
     
     /**
@@ -36,6 +36,7 @@ class Login extends MY_Controller {
             $infoSessao["login"] = $login;
             $infoSessao["id_usuario"] = $item->id_usuario;
             $infoSessao["nome"] = $item->nome;
+            $infoSessao["root"] = $item->root;
             $infoSessao["logado"] = TRUE;
             
             //Reseta as tentativas de login

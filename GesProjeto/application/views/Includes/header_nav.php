@@ -133,60 +133,32 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         
-                        
+                         
                         <!-- /.Cadastros -->
-                        <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Cadastros<span class="fa arrow"></span></a>
+                        <?php foreach ($menus as $item_menu){ ?>
+                            <li>
+                                <a href="<?= base_url()."".$item_menu->link; ?>" id="menu_<?=$item_menu->codigo_menu?>"><i class="fa <?=$item_menu->simbolo?> fa-fw"></i><?=$item_menu->descricao?></a>
+                            </li>
+                        <?php } ?>
+                                         
+                        
+                        
+                        
+                        <?php if($this->session->userdata('root')) { ?>
+                            <li>
+                                <a href="#"><i class="fa fa-gears fa-fw"></i> Estruturador<span class="fa arrow"></span></a>
+
+                                            <ul class="nav nav-second-level">
+                                                <li>
+                                                    <a href="<?= base_url(); ?>menus"><i class="fa fa-list fa-fw"></i>Menus</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?= base_url(); ?>estruturador"><i class="fa fa-table fa-fw"></i>Estruturador de dados</a>
+                                                </li>
+                                            </ul>
                             
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="<?= base_url(); ?>Pais"><i class="fa fa-globe fa-fw"></i>Países</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?= base_url(); ?>Estado"><i class="fa fa-map-o fa-fw"></i>Estados</a>
-                                            </li>
-                                             <li>
-                                                <a href="<?= base_url(); ?>Cidade"><i class="fa fa-map-marker fa-fw"></i>Cidades</a>
-                                            </li>
-                                        </ul>
-                                
-                            
-                            
-                        </li>
-                        
-                        
-                        
-                        
-                        
-                        <li>
-                            <a href="#"><i class="fa fa-tasks fa-fw"></i> Projetos<span class="fa arrow"></span></a>
-                            
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="<?= base_url(); ?>Projeto"><i class="fa fa-tasks fa-fw"></i>Projetos</a>
-                                            </li>
-                                           
-                                        </ul>
-                                
-                            
-                            
-                        </li>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                            </li>
+                        <?php } ?>
                         
                         
                         

@@ -183,7 +183,12 @@ class MY_Controller extends CI_Controller {
     function index(){
         $this->autentica();
         $this->load->view("Includes/header");
-        $this->load->view("Includes/header_nav");
+        
+        //Monta o menu
+        $this->db->where("ativo",true);
+        $this->db->order_by("descricao");
+        $header_nav["menus"] = $this->db->get("estruturador_menus")->result();
+        $this->load->view("Includes/header_nav",$header_nav);
         
         $dados["tabela"] =$this->table($this->cabecalho, $this->linhas);
         $dados["titulo"] = $this->titulo;

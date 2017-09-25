@@ -34,7 +34,12 @@ class Usuarios extends MY_Controller {
         $this->db->where("id_usuario",$id_usuario);
         $erro["dados"] = $this->db->get("usuario")->result()[0];
         $this->load->view("Includes/header");
-        $this->load->view("Includes/header_nav");
+        
+          $this->db->where("ativo",true);
+        $this->db->order_by("descricao");
+        $header_nav["menus"] = $this->db->get("estruturador_menus")->result();
+        $this->load->view("Includes/header_nav",$header_nav["menus"]);
+        
         $erro["erro"] = "";
         $this->load->view("usuarios/cadastro",$erro);
         $this->load->view("Includes/footer");
