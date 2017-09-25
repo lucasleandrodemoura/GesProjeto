@@ -25,7 +25,19 @@
     
     <link rel="stylesheet" href="<?=base_url()?>Includes/Janelas/Janelas.css"> 
     <link rel="stylesheet" href="<?=base_url()?>Includes/thema.css">  
-
+    
+    <script type="text/javascript">
+    /**
+     * Abre a tela de um novo cadastro
+     * @returns {undefined}
+     */
+    function Novo(url = "<?=base_url()?><?=uri_string()?>/cadastro"){
+        top.window.janela = new Janela("novo", url, "Cadastro",'650');
+        top.window.janela.onCloseRefresh(window);
+        top.window.janela.autoSize();
+        top.window.janela.show();
+    }
+    </script>
   
 </head>
 <body>

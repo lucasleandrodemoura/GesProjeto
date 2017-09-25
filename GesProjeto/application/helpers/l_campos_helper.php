@@ -87,7 +87,7 @@ if ( ! function_exists('L_Editar'))
                 }
             }
             
-            return "<a class='btn btn-success small' title='Editar' href='".$link."'>"
+            return "<a class='btn btn-success small' title='Editar' href=javascript:Novo('".$link."');>"
                     . "<i class='fa fa-edit'></i>"
                  . "</a>";
         }
