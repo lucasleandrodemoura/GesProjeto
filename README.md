@@ -1,21 +1,15 @@
-# GesProjeto
-Projeto final de conclusão de curso de Análise e Desenvolvimento de Sistemas da Universidade do Vale do Taquari (2017/B)
+Gerenciamento de projeto foi alterado para o BitBucket.
 
-Manual do Framework back-end
-https://codeigniter.com/user_guide/
+Segue link para repositório da versão:
+
+https://bitbucket.org/gestaoprojetounivates2017/gesprojeto/overview
 
 
-Release 1
-https://drive.google.com/a/universo.univates.br/file/d/0B_HQGwGEFOS-ZWNSb25Zc3ZyRzg/view?usp=sharing
+Clones:
+https://lucasleandrodemoura@bitbucket.org/gestaoprojetounivates2017/gesprojeto.git
 
-- Login
-- Envio de e-mails
-- Gerador de PDF
-- Estruturador de dados
-- Cadastro de Projetos
-- Cadastro de País
-- Cadastro de Estados
-- Cadastro de Cidades
-- Recuperador de senhas
-- Cadastro de Setor
+
+Rss das alterações
+https://bitbucket.org/gestaoprojetounivates2017/gesprojeto/rss?token=c2c6d0fa0a82b44207f12887d75c5277
+
 
